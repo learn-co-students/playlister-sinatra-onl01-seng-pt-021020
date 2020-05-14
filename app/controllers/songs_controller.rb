@@ -51,13 +51,13 @@ class SongsController < ApplicationController
   end
 
   get '/songs/:slug' do
-    @song = Song.all.select {|song| song.slug == params[:slug]}.first
+    @song = Song.find_by_slug(params[:slug])
 
     erb :'songs/show'
   end
 
   patch '/songs/:slug' do
-    song = Song.all.select {|song| song.slug == params[:slug]}.first
+    song = Song.find_by_slug(params[:slug])
     if !params[:song][:artist].nil?
       song.artist = Artist.find_by_id(params[:song][:artist].to_i)
     end
@@ -90,7 +90,7 @@ class SongsController < ApplicationController
   end
 
   get '/songs/:slug/edit' do
-    @song = Song.all.select {|song| song.slug == params[:slug]}.first
+    @song = Song.find_by_slug(params[:slug])
     @artists = Artist.all
     @genres = Genre.all
 
