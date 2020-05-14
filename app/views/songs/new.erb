@@ -23,7 +23,7 @@
     <% for genre in @genres %>
       <li>
         <label for="genre-<%= genre.id %>"><%= genre.name %></label>
-          <input type="checkbox" name="song[genre_id][]" id="genre-<%= genre.id %>" value="<%= genre.id %>">
+          <input type="checkbox" name="song[genres][]" id="genre-<%= genre.id %>" value="<%= genre.id %>">
       </li>
     <% end %>
   </ul>

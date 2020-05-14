@@ -3,7 +3,6 @@ require './config/environment'
 begin
   fi_check_migration
 
-  # use Rack::Flash
   use Rack::MethodOverride
   use GenresController
   use ArtistsController
