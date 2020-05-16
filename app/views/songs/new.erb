@@ -1,0 +1,36 @@
+<form action="/songs" method="post">
+
+  <h2><label for="Name">Song Name: </label></h2>
+  <input type="text" name="song[name]" id="Name">
+
+  <h2>Existing Artists: </h2>
+  <caption>Choose an existing artist or create a new artist below:</caption>
+  <ul>
+    <% for artist in @artists %>
+      <li>
+        <label for="artist-<%= artist.id %>"><%= artist.name %></label>
+        <input type="radio" name="song[artist]" id="artist-<%= artist.id %>" value="<%= artist.id %>">
+      </li>
+    <% end %>
+  </ul>
+
+  <h2><label for="new_artist_name">New Artist Name: </label></h2>
+  <input type="text" name="new_artist_name" id="new_artist_name">
+
+  <h2>Genres: </h2>
+  <caption>Choose existing genres and/or create a new genre below:</caption>
+  <ul>
+    <% for genre in @genres %>
+      <li>
+        <label for="genre-<%= genre.id %>"><%= genre.name %></label>
+          <input type="checkbox" name="song[genres][]" id="genre-<%= genre.id %>" value="<%= genre.id %>">
+      </li>
+    <% end %>
+  </ul>
+
+  <h2><label for="new_genre_name">New Genre Name: </label></h2>
+  <input type="text" name="new_genre_name" id="new_genre_name">
+
+  <button type="submit" id="Create">Create</button>
+
+</form>
